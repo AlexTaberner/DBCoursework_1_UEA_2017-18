@@ -1,0 +1,1 @@
+host='localhost' dbname= 'postgres' user='jfm16fku' password = 'Vanu5cum5!!'

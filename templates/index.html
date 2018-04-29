@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>DB COURSEWORK - 100184794</title>
+</head>
+
+<body>
+    <div>
+        <h1>{{error}}</h1>
+        <h1>{{result}}</h1>
+        <h1> Some Support Company </h1>
+            
+        <h3> Create new customer: </h3>
+            <form action="newcustomer" method="post">
+                <label>Customer ID:</label><input type="number" name="id" value=""><br>
+                <label>Customer Name:</label><input type="text" name="name" value=""><br>
+                <label>Customer Email:</label><input type="email" name="email" value=""><br>
+                <input type="submit" value="Submit">
+            </form>
+            
+        <h3> Create new ticket: </h3>
+            <form action="newticket" method="post">
+                <label>Ticket ID:</label><input type="text" name="ticketid" value=""><br>
+                <label>Problem Summary:</label><input type="text" name="problem" value=""><br>
+                <label>Status:</label><select name="status">
+                                                        <option value="open" selected>Open</option>
+                                                        <option value="closed">Closed </option></select><br>
+                <label>Priority:</label><select name="priority">
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3" selected>3</option></select><br>
+                <label>Logged date and Time:</label><input type="datetime-local" name="datetime" value=""><label>(leave blank for current time)</label><br>
+                <label>Customer ID:</label><input type="number" name="customerid" value=""><br>
+                <label>Product ID:</label><input type="number" name="productid" value=""><br>
+                <input type="submit" value="Submit">
+            </form>
+            
+        <h3> Add update to ticket (STAFF): </h3>
+            <form action="updatestaff" method="post">
+                <label>Update ID:</label><input type="number" name="updateid" value=""><br>
+                <label>Message:</label><input type="text" name="message" value=""><br>
+                <label>Ticket ID:</label><input type="number" name="ticketid" value=""><br>
+                <label>Staff ID:</label><input type="number" name="staffid" value=""><br>
+                <input type="submit" value="Submit">
+            </form>
+            
+        <h3> List outstanding tickets: </h3>
+            <form action="outstanding" method="post">
+                <input type="submit" value="Submit">
+            </form>
+            
+        <h3> Set ticket to closed: </h3>
+            <form action="closeticket" method="post">
+                <label>Ticket ID</label><input type="number" name="ticketid" value=""><br>
+                <input type="submit" value="Submit">
+            </form>
+            
+        <h3> List ticket updates: </h3>
+            <form action="listupdate" method="post">
+                <label>Ticket ID:</label><input type="number" name="ticketid" value=""><br>
+                <input type="submit" value="Submit">
+            </form>
+            
+        <h3> Show ticket status report: </h3>
+            <form action="newcustomer" method="post">
+                <input type="submit" value="Submit">
+            </form>
+            
+        <h3> Remove customer: </h3>
+            <form action="deletecustomer" method="post">
+                <label>Customer ID:</label><input type="number" name="customerid" value=""><br>
+                <input type="submit" value="Submit">
+            </form>
+    </div>
+</body>
