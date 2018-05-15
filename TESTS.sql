@@ -16,6 +16,7 @@ SELECT ticket.ticketid, ticket.problem, ticket.status, ticket.priority, ticket.l
 FROM ticket
 INNER JOIN customer ON ticket.customerid = customer.customerid
 INNER JOIN product ON ticket.productid = product.productid
+WHERE ticket.status = 'open'
 
 5)
 UPDATE ticket
@@ -23,7 +24,7 @@ SET status = 'closed'
 WHERE ticketid = [ticketid]
 
 6)
-SELECT ticketupdate.ticketupdateid ticket.problem, ticketupdate.message, staff.name, ticketupdate.updatetime
+SELECT ticketupdate.ticketupdateid, ticket.problem, ticketupdate.message, staff.name, ticketupdate.updatetime
 FROM ticket
 INNER JOIN ticketupdate ON ticket.ticketid = ticketupdate.ticketid
 LEFT JOIN staff ON ticketupdate.staffid = staff.staffid
@@ -31,9 +32,12 @@ WHERE ticket.ticketid = 2
 ORDER BY ticketupdate.updatetime
 
 7)
-updates
-time -> first update
-time -> last update
+SELECT ticket.ticketid, ticket.problem, ticket.status, ticket.priority,
+(SELECT count(*) AS count FROM dbcoursework.ticketupdate WHERE ticket.ticketid = ticketid) AS total_updates,
+(SELECT MIN(ticketupdate.updatetime) - ticket.loggedtime AS atime FROM dbcoursework.ticketupdate WHERE ticket.ticketid = ticketid LIMIT 1) AS first_response_time,
+(SELECT MAX(ticketupdate.updatetime) - ticket.loggedtime AS atime FROM dbcoursework.ticketupdate WHERE ticket.ticketid = ticketid) AS time_to_resolution
+FROM dbcoursework.ticket
+WHERE ticket.status = 'closed';
 
 8)
 DELETE FROM customer
